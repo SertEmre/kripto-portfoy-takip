@@ -6,14 +6,24 @@ def fiyat_cekme(coin):
         'ids':coin,
         'vs_currencies': para
     }
-    oku = requests.get(url,params=params)
-    data = oku.json()
-    return data[coin][para]
 
+    try:
+        oku = requests.get(url, params= params)
+        data = oku.json()
+
+        if coin not in data or para not in data[coin]:
+            print(f"{coin} için fiyat bilgisi alınamadı")
+            return 0
+        return data[coin][para]
+    
+    except requests.exceptions.RequestException as x:
+        print(f"{coin} fiyatı çekilirken hata oluştu:{x}")
+        return 0
+    
 portfoy  = {
-    'bitcoin': 4,
-    'ethereum': 2,
-    'solana':0
+    'bitcoin': 0.5,
+    'ethereum': 4,
+    'solana':1
 }
 
 kasa_degeri = 0
@@ -23,6 +33,4 @@ for coin,miktar in portfoy.items():
     deger = fiyat*miktar
     kasa_degeri += deger
 print(f"Toplam kasa değeri: {kasa_degeri}{para}")
-
-
 

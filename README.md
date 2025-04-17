@@ -1,4 +1,4 @@
-CoinGecko API kullanarak kripto para portföy değerini hesaplayan Python scripti.
+CoinGecko API kullanarak kripto para portföy değerini hesaplayan Python kodu.
 
 #Özellikler
 -Bitcoin, Ethereum, Solana gibi coinlerin güncel fiyatlarını çeker bunu kendinize göre kodda değişiklik yaparak API de yer alan coinlerle değiştirebilirisiniz.

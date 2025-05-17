@@ -1,4 +1,5 @@
 import requests
+from datetime import datetime 
 
 def fiyat_cekme(coin,para):
     url = f"https://api.coingecko.com/api/v3/simple/price"
@@ -35,9 +36,22 @@ portfoy  = {
 }
 para = para_birimi()
 kasa_degeri = 0
+rapor_satirlari = []
 
-for coin,miktar in portfoy.items():
-    fiyat = fiyat_cekme(coin,para)
-    deger = fiyat*miktar
+for coin, miktar in portfoy.items():
+    fiyat = fiyat_cekme(coin, para)
+    deger = fiyat * miktar
     kasa_degeri += deger
-print(f"Toplam kasa değeri: {kasa_degeri}{para}")
+    satir = f"{coin.capitalize()} - Miktar: {miktar}, Fiyat: {fiyat} {para.upper()}, Toplam: {deger:.2f} {para.upper()}"
+    print(satir)
+    rapor_satirlari.append(satir)
+
+
+print("\nPortföyün toplam değeri:", round(kasa_degeri, 2), para.upper())
+
+with open("portfoy_dosyası.txt", "a", encoding="utf-8") as dosya:
+    dosya.write("---Yeni Kayıt---\n")
+    dosya.write("Tarih: "+ datetime.now().strftime('%Y-%m-%d %H:%M:%S')+ "\n")
+    for satir in rapor_satirlari:
+        dosya.write(satir + "\n")
+    dosya.write("Toplam Değer:"+str(round(kasa_degeri, 2)) +" "+ para.upper() + "\n\n")

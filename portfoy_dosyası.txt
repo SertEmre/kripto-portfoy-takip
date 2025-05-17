@@ -1,0 +1,7 @@
+---Yeni Kayıt---
+Tarih: 2025-05-17 23:42:45
+Bitcoin - Miktar: 0.5, Fiyat: 103197 USD, Toplam: 51598.50 USD
+Ethereum - Miktar: 4, Fiyat: 2474.42 USD, Toplam: 9897.68 USD
+Solana - Miktar: 1, Fiyat: 165.53 USD, Toplam: 165.53 USD
+Toplam Değer:61661.71 USD
+
